@@ -9,6 +9,10 @@ import { listCategories } from './app/useCases/categories/listCategories';
 import { createProduct } from './app/useCases/products/createProducts';
 import { listProducts } from './app/useCases/products/listProducts';
 import { listProductsByCategory } from './app/useCases/categories/listProductsByCategory';
+import { listOrder } from './app/useCases/Orders/listOrder';
+import { createOrder } from './app/useCases/Orders/createOrder';
+import { changeOrderStatus } from './app/useCases/Orders/changeOrderStatus';
+import { cancelOrder } from './app/useCases/Orders/cancelOrder';
 
 export const router = Router();
 
@@ -45,23 +49,15 @@ router.get('/categories/:categoryId/products',listProductsByCategory);
 
 // List orders
 
-router.get('/orders',(req,res) =>{
-	res.send('OK');
-});
+router.get('/orders',listOrder);
 
 // Create order
-router.post('/orders',(req,res) =>{
-	res.send('OK');
-});
+router.post('/orders', createOrder);
 
 // Change order status | Usaria put caso alterasse todas as informações da orders. A única alteração aqui é o status por isso o uso do patch, alteração parcial.
 
-router.patch('/orders/:orderId',(req,res) =>{
-	res.send('OK');
-});
+router.patch('/orders/:orderId',changeOrderStatus);
 
 // Delete / cancel order
 
-router.delete('/orders/:orderId',(req,res) =>{
-	res.send('OK');
-});
+router.delete('/orders/:orderId',cancelOrder);
